@@ -1,6 +1,7 @@
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 
@@ -13,7 +14,7 @@ class WebserverTest(unittest.TestCase):
 
     def test_title(self):
         self.driver.get("http://localhost")
-        self.assertIn("Hello world", self.driver.title)
+        self.assertIn("Hello world", self.driver.find_element(By.TAG_NAME, "body").text)
 
     def tearDown(self):
         self.driver.close()
